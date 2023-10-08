@@ -44,11 +44,11 @@ def testInsertListConc(numVolte, numPerDim):
             startTimeStamp = timer()
             values.insert(element(random.randint(0,dimList)))
             finishTimeStamp = timer()
-            iterationTime = finishTimeStamp - startTimeStamp
+            iterationTime = round(finishTimeStamp - startTimeStamp,8)
             totInsertTime = totInsertTime + iterationTime
             # tolgo l'ultimo elemento inserito
             values.deleteLastElementInserted()
-        testInsertAverageTimes.append(totInsertTime/numPerDim)
+        testInsertAverageTimes.append(totInsertTime/dimList)
         dimList = dimList + 1
     #plot dei risultati
     x_axis = [i for i in range(numVolte)]
@@ -105,7 +105,7 @@ def testSearchListConc(numVolte, numPerDim):
             startTimeStamp = timer()
             values.search(random.randint(0,dimList))
             finishTimeStamp = timer()
-            iterationTime = finishTimeStamp - startTimeStamp
+            iterationTime = round(finishTimeStamp - startTimeStamp,8)
             totSearchTime = totSearchTime + iterationTime
         testSearchAverageTimes.append(totSearchTime/numPerDim)
         dimList = dimList + 1
@@ -131,7 +131,7 @@ def testDeleteListConc(numVolte,numPerDim):
             startTimeStamp = timer()
             result = values.delete(random.randint(0,dimList))
             finishTimeStamp = timer()
-            iterationTime = finishTimeStamp - startTimeStamp
+            iterationTime = round(finishTimeStamp - startTimeStamp,8)
             totDeleteTime = totDeleteTime + iterationTime
             #se la delete era andata a buon fine, reinserisco un elemento per compensare quello appena tolto
             if result == True:
@@ -154,12 +154,12 @@ if __name__ == '__main__':
    #dimensione massima della lista su cui si fanno le operazioni
    numVolte = 1000
    #numero di volte in cui si fa la stessa operazione (insert,delete o search) per una lista di una certa dimensione n
-   numPerDim = 30
+   numPerDim = 100
 
    #test per operazioni di dizionario implementate con Lista Concatenata
    testSearchListConc(numVolte,numPerDim)
-   testDeleteListConc(numVolte,numPerDim)
-   testInsertListConc(numVolte,numPerDim)
+   #testDeleteListConc(numVolte,numPerDim)
+   #testInsertListConc(numVolte,numPerDim)
 
    #test funzionamento alberi
    #testInsertABR(numVolte,numPerDim)
