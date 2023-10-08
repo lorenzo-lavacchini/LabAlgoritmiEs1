@@ -44,7 +44,7 @@ def testInsertListConc(numVolte, numPerDim):
             startTimeStamp = timer()
             values.insert(element(random.randint(0,dimList)))
             finishTimeStamp = timer()
-            iterationTime = round(finishTimeStamp - startTimeStamp,8)
+            iterationTime = finishTimeStamp - startTimeStamp
             totInsertTime = totInsertTime + iterationTime
             # tolgo l'ultimo elemento inserito
             values.deleteLastElementInserted()
@@ -154,7 +154,7 @@ if __name__ == '__main__':
    #dimensione massima della lista su cui si fanno le operazioni
    numVolte = 1000
    #numero di volte in cui si fa la stessa operazione (insert,delete o search) per una lista di una certa dimensione n
-   numPerDim = 50
+   numPerDim = 30
 
    #test per operazioni di dizionario implementate con Lista Concatenata
    testSearchListConc(numVolte,numPerDim)
