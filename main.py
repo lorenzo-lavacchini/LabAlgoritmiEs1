@@ -42,7 +42,7 @@ def testInsertListConc(numVolte, numPerDim):
         values = valuesRandomListConc(dimList)
         for j in range (numPerDim):
             startTimeStamp = timer()
-            values.insert(random.randint(0,dimList))
+            values.insert(element(random.randint(0,dimList)))
             finishTimeStamp = timer()
             iterationTime = round(finishTimeStamp - startTimeStamp,8)
             totInsertTime = totInsertTime + iterationTime
@@ -53,7 +53,7 @@ def testInsertListConc(numVolte, numPerDim):
     #plot dei risultati
     x_axis = [i for i in range(numVolte)]
     graph1, plot1 = plt.subplots()
-    plot1.plot(x_axis, testInsertAverageTimes, label="search ", color="orange")
+    plot1.plot(x_axis, testInsertAverageTimes, label="insert ", color="orange")
     plot1.set_title("Risultati per Insert implementata con Lista Concatenata")
     plot1.set_ylabel("tempo impiegato (secondi)")
     plot1.set_xlabel("dimensione vettore")
@@ -141,7 +141,7 @@ def testDeleteListConc(numVolte,numPerDim):
     #plot dei risultati
     x_axis = [i for i in range(numVolte)]
     graph1, plot1 = plt.subplots()
-    plot1.plot(x_axis, testDeleteAverageTimes, label="search ", color="orange")
+    plot1.plot(x_axis, testDeleteAverageTimes, label="delete ", color="orange")
     plot1.set_title("Risultati per Delete implementata con Lista Concatenata")
     plot1.set_ylabel("tempo impiegato (secondi)")
     plot1.set_xlabel("dimensione vettore")
@@ -152,14 +152,14 @@ def testDeleteListConc(numVolte,numPerDim):
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
    #dimensione massima della lista su cui si fanno le operazioni
-   numVolte = 100
+   numVolte = 1000
    #numero di volte in cui si fa la stessa operazione (insert,delete o search) per una lista di una certa dimensione n
-   numPerDim = 20
+   numPerDim = 50
 
    #test per operazioni di dizionario implementate con Lista Concatenata
    testSearchListConc(numVolte,numPerDim)
-   #testDeleteListConc(numVolte,numPerDim)
-   #testInsertListConc(numVolte,numPerDim)
+   testDeleteListConc(numVolte,numPerDim)
+   testInsertListConc(numVolte,numPerDim)
 
    #test funzionamento alberi
    #testInsertABR(numVolte,numPerDim)
