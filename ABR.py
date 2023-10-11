@@ -10,7 +10,7 @@ class ABR:
             self.root = None
     #ricerca iterativa in albero binario
 
-    def searchABR(self,k):
+    def search(self,k):
         x = self.root
         while x != None and k != x.key:
             if k<x.key:
@@ -19,7 +19,7 @@ class ABR:
                 x = x.right
         return x
 
-    def insertABR(self,z):
+    def insert(self,z):
         x = self.root
         y = None
         while x != None:
@@ -35,6 +35,7 @@ class ABR:
             y.left = z
         else:
             y.right = z
+        return z
 
     def treeTransplant(self,u,v):
         if u.p == None:
@@ -52,7 +53,7 @@ class ABR:
             x = x.left
         return x
 
-    def deleteABR(self,z):
+    def delete(self,z):
         if z.left == None:
             self.treeTransplant(z,z.right)
         elif z.right == None:
@@ -84,3 +85,16 @@ class ABR:
 
         # Ritorno il massimo a ogni iterazione
         return max(sinistra, destra) + 1
+
+    def count_nodes(self,x):
+        # Caso base: se l'albero è vuoto (radice è None), il numero di nodi è 0.
+        if x == None:
+            return 0
+
+        # Calcoliamo il numero di nodi nei sotto-alberi sinistro e destro.
+        left_count = self.count_nodes(x.left)
+        right_count = self.count_nodes(x.right)
+
+        # Il numero totale di nodi nell'albero è la somma dei nodi nei sotto-alberi
+        # sinistro e destro, più 1 (per contare il nodo corrente).
+        return left_count + right_count + 1
